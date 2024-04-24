@@ -43,6 +43,16 @@ public class Jiggle : MonoBehaviour
                 scoreIncreasser.Invoke();
             }
         }
+        else if (Input.GetMouseButtonDown(0) && rb.gravityScale != 0)
+        {
+            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 clikPos = new Vector2(wp.x, wp.y);
+            if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(clikPos))
+            {
+                Jump();
+                scoreIncreasser.Invoke();
+            }
+        }
     }
 
     void Jump()
